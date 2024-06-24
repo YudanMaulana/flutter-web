@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,6 +15,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Web Navbar Example',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        textTheme: const TextTheme(
+          bodyMedium: TextStyle(fontFamily: 'GoogleSans'),
+        ),
       ),
       home: const HomePage(),
     );
@@ -47,52 +51,97 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Flexible(
-                  child: RichText(
-                    text: const TextSpan(
-                      children: [
-                        TextSpan(
-                          text: 'Media ',
-                          style: TextStyle(color: Colors.black),
+                  child: Row(
+                    children: [
+                      const Text(
+                        'Media ',
+                        style: TextStyle(
+                          color: Color(0xFF5F6368),
+                          fontSize: 24,
+                          fontFamily: 'GoogleSans',
                         ),
-                        TextSpan(
-                          text: 'Santri Nusantara',
-                          style: TextStyle(color: Color(0xFF4CAF50)), // Warna hijau dalam format hex
-                        ),
-                      ],
-                    ),
+                      ),
+                      AnimatedTextKit(
+                        animatedTexts: [
+                          TypewriterAnimatedText(
+                            'Santri Nusantara',
+                            textStyle: const TextStyle(
+                              color: Color(0xFF4CAF50), // Warna hijau dalam format hex
+                              fontSize: 24,
+                              fontFamily: 'GoogleSans',
+                            ),
+                            speed: const Duration(milliseconds: 100),
+                          ),
+                        ],
+                        repeatForever: true,
+                        pause: const Duration(milliseconds: 500),
+                      ),
+                    ],
                   ),
                 ),
                 Row(
                   children: [
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const BerandaPage()),
+                        );
+                      },
                       child: const Text(
                         'Beranda',
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(
+                          color: Color(0xFF5F6368),
+                          fontFamily: 'GoogleSans',
+                        ),
                       ),
                     ),
                     const SizedBox(width: 20),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const DemoPage()),
+                        );
+                      },
                       child: const Text(
                         'Demo',
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(
+                          color: Color(0xFF5F6368),
+                          fontFamily: 'GoogleSans',
+                        ),
                       ),
                     ),
                     const SizedBox(width: 20),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const DokumentasiPage()),
+                        );
+                      },
                       child: const Text(
                         'Dokumentasi',
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(
+                          color: Color(0xFF5F6368),
+                          fontFamily: 'GoogleSans',
+                        ),
                       ),
                     ),
                     const SizedBox(width: 20),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const HubungiPage()),
+                        );
+                      },
                       child: const Text(
                         'Hubungi',
-                        style: TextStyle(color: Colors.black),
+                        style: TextStyle(
+                          color: Color(0xFF5F6368),
+                          fontFamily: 'GoogleSans',
+                        ),
                       ),
                     ),
                   ],
@@ -103,7 +152,74 @@ class HomePage extends StatelessWidget {
         ),
       ),
       body: const Center(
-        child: Text('See you in the Next time !'),
+        child: Text(
+          'Content here',
+          style: TextStyle(fontFamily: 'GoogleSans'),
+        ),
+      ),
+    );
+  }
+}
+
+class BerandaPage extends StatelessWidget {
+  const BerandaPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Beranda', style: TextStyle(fontFamily: 'GoogleSans')),
+      ),
+      body: const Center(
+        child: Text('Welcome to Beranda Page!', style: TextStyle(fontFamily: 'GoogleSans')),
+      ),
+    );
+  }
+}
+
+class DemoPage extends StatelessWidget {
+  const DemoPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Demo', style: TextStyle(fontFamily: 'GoogleSans')),
+      ),
+      body: const Center(
+        child: Text('Welcome to Demo Page!', style: TextStyle(fontFamily: 'GoogleSans')),
+      ),
+    );
+  }
+}
+
+class DokumentasiPage extends StatelessWidget {
+  const DokumentasiPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Dokumentasi', style: TextStyle(fontFamily: 'GoogleSans')),
+      ),
+      body: const Center(
+        child: Text('Welcome to Dokumentasi Page!', style: TextStyle(fontFamily: 'GoogleSans')),
+      ),
+    );
+  }
+}
+
+class HubungiPage extends StatelessWidget {
+  const HubungiPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Hubungi', style: TextStyle(fontFamily: 'GoogleSans')),
+      ),
+      body: const Center(
+        child: Text('Welcome to Hubungi Page!', style: TextStyle(fontFamily: 'GoogleSans')),
       ),
     );
   }
